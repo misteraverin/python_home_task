@@ -66,6 +66,4 @@ class RandomGen:
         if index != len(values):
             return index
         else:
-            raise ValueError(
-                f"Cannot find valid index for {number} in {values}"
-            )
+            raise ValueError(f"Cannot find valid index for {number} in {values}")

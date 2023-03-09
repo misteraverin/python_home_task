@@ -7,16 +7,21 @@ from collections import Counter
 
 class TestRandomGenInputConditions(unittest.TestCase):
     def _setup_random_gen(
-            self, random_nums: list[int], probabilities: list[float],
+        self,
+        random_nums: list[int],
+        probabilities: list[float],
     ):
-        self._random_generator = RandomGen(random_nums, probabilities, )
+        self._random_generator = RandomGen(
+            random_nums,
+            probabilities,
+        )
 
     def _assert_raise_error(
-            self,
-            probabilities: list[float],
-            random_nums: list[int],
-            error: ValidationError,
-            code: int,
+        self,
+        probabilities: list[float],
+        random_nums: list[int],
+        error: ValidationError,
+        code: int,
     ) -> None:
         with self.assertRaises(error) as context:
             self._setup_random_gen(probabilities, random_nums)
@@ -55,7 +60,9 @@ class TestRandomGenHelpFunctions(unittest.TestCase):
     def test_search_index_greater_than_number(self):
         random_generator = RandomGen([1, 2, 5], [0.1, 0.4, 0.5])
         cumulative_sum = random_generator._cumulative_sum([0.1, 0.4, 0.5])
-        assert random_generator._search_index_greater_than_number(cumulative_sum, 0.4) == 1
+        assert (
+            random_generator._search_index_greater_than_number(cumulative_sum, 0.4) == 1
+        )
 
 
 class TestRandomGen(unittest.TestCase):
